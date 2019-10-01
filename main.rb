@@ -48,3 +48,10 @@ end
 
 window = GameWindow.new
 window.show
+
+
+# xP2=xP1+rsinθ;
+# yP2=yP1−r(1−cosθ)
+
+# x + (radius * Math.sin(angle))
+# y - radius * (1 - Math.cos(angle))
