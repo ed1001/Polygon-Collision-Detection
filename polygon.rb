@@ -4,7 +4,7 @@ require 'gosu'
 require 'geometry'
 
 class Polygon
-  SPEED = 3
+  SPEED = 10
   TORQUE = 4
 
   def initialize(sides, center, radius)
@@ -16,13 +16,22 @@ class Polygon
   end
 
   def translate
-    delta = @points[0].zip(@center).map { |pair| (pair.reduce(&:-) / r).to_f }
+    delta = @points[0].zip(@center).map { |pair| (pair.reduce(&:-) / @radius).to_f }
 
     @points.each do |point|
-      point[0] += delta[0]
-      point[1] += delta[1]
+      point[0] += delta[0] * SPEED
+      point[1] += delta[1] * SPEED
     end
+    @center[0] += delta[0] * SPEED
+    @center[0] += delta[1] * SPEED
   end
+
+  # def rotate(clockwise)
+  #   @points.each do |point|
+  #     point[0] = point[0] + (@radius * Math.sin(TORQUE * Math::PI / 180))
+  #     point[1] = point[1] - @radius * (1 - Math.cos(TORQUE * Math::PI / 180))
+  #   end
+  # end
 
   def draw(window)
     @points.each_with_index do |point, i|
@@ -32,21 +41,3 @@ class Polygon
     window.draw_line(@points.first[0], @points.first[1], Gosu::Color::BLUE, @center[0], @center[1], Gosu::Color::BLUE)
   end
 end
-
-  # def translate_polygon(polygon)
-  #   r = polygon.radius
-  #   factors = polygon.points[1].zip(polygon.center).map { |union| (union.reduce(&:-) / r).to_f  }
-  #   x = polygon.center[0]
-  #   y = polygon.center[1]
-  #   Geometry::RegularPolygon.new sides: 5, center: [x + factors[0], y + factors[1]], diameter: 200
-  # end
-
-  # def rotate_right_polygon(polygon)
-  #   p polygon.points
-  #   polygon.points.each do |point|
-  #     point[0] = point[0] + (polygon.radius * Math.sin(TORQUE * Math::PI / 180)) + 1
-  #     point[1] = point[1] - polygon.radius * (1 - Math.cos(TORQUE * Math::PI / 180))
-  #   end
-  #   p polygon.points
-  #   polygon
-  # end
