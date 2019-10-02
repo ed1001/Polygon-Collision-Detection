@@ -2,10 +2,12 @@
 
 require 'gosu'
 require 'geometry'
+require_relative 'trig'
 
+# create and manipulate polygons in a 2D space
 class Polygon
   SPEED = 10
-  TORQUE = 4
+  TORQUE = 5
 
   def initialize(sides, center, radius)
     template = Geometry::RegularPolygon.new(sides: sides, center: center, radius: radius)
@@ -23,15 +25,18 @@ class Polygon
       point[1] += delta[1] * SPEED
     end
     @center[0] += delta[0] * SPEED
-    @center[0] += delta[1] * SPEED
+    @center[1] += delta[1] * SPEED
   end
 
-  # def rotate(clockwise)
-  #   @points.each do |point|
-  #     point[0] = point[0] + (@radius * Math.sin(TORQUE * Math::PI / 180))
-  #     point[1] = point[1] - @radius * (1 - Math.cos(TORQUE * Math::PI / 180))
-  #   end
-  # end
+  def rotate(clockwise)
+    torque = clockwise ? TORQUE : -TORQUE
+    @points.each do |point|
+      angle = Trig.angle_from_center(@center, point, @radius) + torque
+      transform = Trig.rotation_coord_transform(@radius, angle)
+      point[0] = transform[0] + @center[0]
+      point[1] = transform[1] + @center[1]
+    end
+  end
 
   def draw(window)
     @points.each_with_index do |point, i|

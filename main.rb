@@ -8,7 +8,8 @@ class GameWindow < Gosu::Window
   def initialize
     super 1920, 1080
 
-    @pentagon = Polygon.new(5, [960, 540], 200)
+    # TODO: create polygon yourself
+    @pentagon = Polygon.new(7, [960, 540], 200)
   end
 
   def button_down(btn)
@@ -21,8 +22,8 @@ class GameWindow < Gosu::Window
 
   def update
     @pentagon.translate if button_down?(Gosu::KB_UP)
-    # @pentagon.rotate(true) if button_down?(Gosu::KB_RIGHT)
-    # @pentagon.rotate(false) if button_down?(Gosu::KB_LEFT)
+    @pentagon.rotate(false) if button_down?(Gosu::KB_RIGHT)
+    @pentagon.rotate(true) if button_down?(Gosu::KB_LEFT)
   end
 
   def draw
