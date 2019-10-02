@@ -1,5 +1,7 @@
 # 📐 Polygon Collision Detection
 
-My attempt at a rudimentary homemade collision detection engine.
+My attempt at a rudimentary homemade collision detection engine without using any external libraries to help me (apart from Gosu to visualise).
 
-Can create and move any regular polygon and detect when colliding without using any external libraries (eventually... for now am using Geometry to create polygons but will implement my own Polygon class to do this).
+Create and move any regular polygon and detect when colliding.
+
+I intend to extend this with other physics features like spring, bounce and thrust.
