@@ -9,7 +9,7 @@ class GameWindow < Gosu::Window
 
     # TODO: create polygon yourself
     @pentagon = Polygon.new(4, [1100, 540], 200)
-    @triangle = Polygon.new(3, [300, 540], 200)
+    @triangle = Polygon.new(4, [300, 540], 200)
   end
 
   def button_down(btn)
@@ -32,11 +32,13 @@ class GameWindow < Gosu::Window
     @triangle.translate if button_down?(Gosu::KB_W)
     @triangle.rotate(false) if button_down?(Gosu::KB_S)
     @triangle.rotate(true) if button_down?(Gosu::KB_A)
+
+    Polygon.check_collision(@pentagon, @triangle)
   end
 
   def draw
-    @pentagon.draw(self, Gosu::Color::BLUE)
-    @triangle.draw(self, Gosu::Color::GREEN)
+    @pentagon.draw(self, @pentagon.colour)
+    @triangle.draw(self, @triangle.colour)
   end
 end
 
