@@ -1,7 +1,21 @@
 # 📐 Polygon Collision Detection
 
-My attempt at a rudimentary homemade collision detection engine without using any external libraries to help me (apart from Gosu to visualise, and mathn for trigonometry functions).
+A rudimentary collision detection engine
 
 Create and move any regular polygon and detect when colliding.
 
-I intend to extend this with other physics features like spring, bounce and thrust.
+Controls: 
+
+esc - close
+g   - generate new random polygons
+d   - print debug info
+
+polygon A: 
+  w - move forward
+  a - turn clockwise
+  s - turn anti-clockwise
+
+polygon B: 
+  up arrow - move forward
+  left arrow - turn clockwise
+  right arrow - turn anti-clockwise

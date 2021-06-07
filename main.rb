@@ -19,7 +19,10 @@ class GameWindow < Gosu::Window
       @poly_b = Polygon.new(rand(3..8), [300, 540], 200)
     elsif btn == Gosu::KB_D
       # DEBUG
-      p @pentagon
+      puts 'polygon A:'
+      p @poly_a
+      puts 'polygon B:'
+      p @poly_b
     end
   end
 
