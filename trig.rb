@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'mathn'
-
 # handy trigonometry methods for conversions
 class Trig
   def self.to_rad(degrees)
@@ -15,7 +13,7 @@ class Trig
   def self.angle_from_center(center, point, radius)
     dy = point[1] - center[1]
     negative = point[0] < center[0] ? 360 : 0
-    (negative - to_deg(Math.acos(dy / radius))).abs
+    (negative - to_deg(Math.acos((dy / radius).clamp(-1, 1)))).abs
   end
 
   def self.rotation_coord_transform(radius, angle, center)
