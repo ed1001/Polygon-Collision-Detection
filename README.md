@@ -4,18 +4,30 @@ A rudimentary collision detection engine
 
 Create and move any regular polygon and detect when colliding.
 
-Controls: 
+## getting started
+install ruby if not already installed:
+```shell
+brew install ruby
+```
+in the project folder run the following command:
+```shell
+bin/start.sh
+```
+### general commands
+action | key
+-------|----
+**polygon A**|
+move forward|w
+turn clockwise|s
+turn anti-clockwise|a
+**polygon B**|
+move forward|up arrow
+turn clockwise|right arrow
+turn anti-clockwise|left arrow
 
-esc - close
-g   - generate new random polygons
-d   - print debug info
-
-polygon A: 
-  w - move forward
-  a - turn clockwise
-  s - turn anti-clockwise
-
-polygon B: 
-  up arrow - move forward
-  left arrow - turn clockwise
-  right arrow - turn anti-clockwise
+### general commands
+action | key
+-------|----
+generate new random polygons|G
+print debug info|D
+quit|ESC
